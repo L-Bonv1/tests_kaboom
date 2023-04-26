@@ -1,4 +1,4 @@
-//Charger kaboom
+//Charger kaboom (https://3000.kaboomjs.com/)
 kaboom({
 	width: 600,
 	height: 600,
@@ -93,27 +93,22 @@ scene("Niveau 1", () => {
 		anchor("center"),
 	]);
 
-// //Ajouter des murs infranchissables tout autour de la zone de jeu
-// add([
-// 	rect(width(), 10), // mur supérieur
-// 	pos(0, 0),
-// 	body(),
-// 	]);
-// add([
-// 	rect(width(), 10), // mur inférieur
-// 	pos(0, height() - 10),
-// 	body(),
-// 	]);
-// add([
-// 	rect(10, height()), // mur gauche
-// 	pos(0, 0),
-// 	body(),
-// 	]);
-// add([
-// 	rect(10, height()), // mur droit
-// 	pos(width() - 10, 0),
-// 	body(),
-// ]);
+		//Ajout murs infranchissables
+		const level = addLevel([
+			"xxxxxxxxxxxxxxxxx",
+			"x               x",
+			"xxxxxxxxxxxxxxxxx",
+		],{
+			tileWidth: 16,
+			tileHeight: 16,
+			tiles: {
+				"x": () => [
+					sprite("wall_left"),
+					area({ shape: new Rect(vec2(0), 4, 16) }),
+					body({ isStatic: true }),
+					tile({ isObstacle: true }),
+				]},
+			})
 	
 	const player = add([
 		sprite("hero"),
@@ -128,7 +123,7 @@ scene("Niveau 1", () => {
 		pos(250, 120),
 		scale(2),
 		area({ width: 2, height: 2}),
-		body({isStatic: true}),,	
+		body({isStatic: true}),	
 	]);
 	
 	// Vitesse de déplacement du joueur
