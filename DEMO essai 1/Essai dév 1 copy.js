@@ -134,7 +134,7 @@ scene("Niveau 1", () => {
 	//Dialogue Ogre-player
 	//Détection collision Ogre-player
 	player.onCollide("ogre", () => {
-		showDialog("Qu'est-ce que... ?");
+		showDialog("Qu'est-ce que...?");
 		});
 	function showDialog(text) {
  	const dialog = add([
@@ -151,6 +151,8 @@ scene("Niveau 1", () => {
  	layer("ui"),
  	]);
  }
+
+ // Hello world
 	
 	// Vitesse de déplacement du joueur
 	  const SPEED = 140;
@@ -175,7 +177,5 @@ scene("Niveau 1", () => {
 		movePlayer(vec2(0, 1));
 	  });
 
-	});
-	
-	// Démarrer le jeu sur l'écran d'accueil
+	  //Démarrer le jeu sur l'écran d'accueil
 	go("home")
