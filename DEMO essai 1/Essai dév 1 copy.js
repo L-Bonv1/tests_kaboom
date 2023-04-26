@@ -151,8 +151,6 @@ scene("Niveau 1", () => {
  	layer("ui"),
  	]);
  }
-
- // Hello world
 	
 	// Vitesse de déplacement du joueur
 	  const SPEED = 140;
