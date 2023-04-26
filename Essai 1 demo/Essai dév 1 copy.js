@@ -93,34 +93,34 @@ scene("Niveau 1", () => {
 		anchor("center"),
 	]);
 
-// //Ajouter des murs infranchissables tout autour de la zone de jeu
-// add([
-// 	rect(width(), 10), // mur supérieur
-// 	pos(0, 0),
-// 	body(),
-// 	]);
-// add([
-// 	rect(width(), 10), // mur inférieur
-// 	pos(0, height() - 10),
-// 	body(),
-// 	]);
-// add([
-// 	rect(10, height()), // mur gauche
-// 	pos(0, 0),
-// 	body(),
-// 	]);
-// add([
-// 	rect(10, height()), // mur droit
-// 	pos(width() - 10, 0),
-// 	body(),
-// ]);
+//Ajouter des murs infranchissables tout autour de la zone de jeu
+add([
+	rect(width(), 10), // mur supérieur
+	pos(0, 0),
+	//solid(),
+	]);
+add([
+	rect(width(), 10), // mur inférieur
+	pos(0, height() - 10),
+	//solid(),
+	]);
+add([
+	rect(10, height()), // mur gauche
+	pos(0, 0),
+	//solid(),
+	]);
+add([
+	rect(10, height()), // mur droit
+	pos(width() - 10, 0),
+	//solid(),
+]);
 	
 	const player = add([
 		sprite("hero"),
 		pos(450, 300),
 		scale(2),
 		area({ width: 2, height: 2}),
-		body(),
+		//solid("player"),
 	]);
 
 	const Ogre = add([
@@ -128,8 +128,30 @@ scene("Niveau 1", () => {
 		pos(250, 120),
 		scale(2),
 		area({ width: 2, height: 2}),
-		body({isStatic: true}),,	
+		//solid("ogre"),	
 	]);
+	
+	// Dialogue Ogre-player
+	//Détection collision Ogre-player
+		player.collides("ogre", () => {
+		showDialog("Qu'est-ce que... ?");
+		});
+	// collision = dialogue Ogre
+		function showDialog(text) {
+			const dialog = add([
+			rect(200, 50),
+			pos(ogre.pos.x - 100, ogre.pos.y - 70),
+			origin("center"),
+			color(0, 0, 0),
+			layer("ui"),
+		]);
+			const dialogText = add([
+		text,
+		pos(dialog.pos.x, dialog.pos.y - 10),
+		origin("center"),
+		layer("ui"),
+		]);
+	}
 	
 	// Vitesse de déplacement du joueur
 	  const SPEED = 140;
@@ -153,7 +175,6 @@ scene("Niveau 1", () => {
 	  onKeyDown("down", () => {
 		movePlayer(vec2(0, 1));
 	  });
-	
 	});
 	
 	// Démarrez le jeu sur l'écran d'accueil

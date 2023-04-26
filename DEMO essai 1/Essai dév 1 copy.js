@@ -92,6 +92,7 @@ scene("Niveau 1", () => {
 		pos(width() / 2, height() / 2),
 		anchor("center"),
 	]);
+}
 
 // //Ajouter des murs infranchissables tout autour de la zone de jeu
 // add([
@@ -151,10 +152,10 @@ scene("Niveau 1", () => {
  	layer("ui"),
  	]);
  }
-	
-	// Vitesse de déplacement du joueur
+	//Vitesse de déplacement du joueur
 	  const SPEED = 140;
-	// Fonction de déplacement du joueur
+	
+	//Fonction de déplacement du joueur
 	  function movePlayer(dir) {
 		player.move(dir.scale(SPEED));
 	  }
