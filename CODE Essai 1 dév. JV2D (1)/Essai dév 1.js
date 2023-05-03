@@ -12,6 +12,7 @@ loadSpriteAtlas("./dungeon.png", "./dungeon.json");
 loadSprite("Ecran accueil", "./Ecran accueil.png");
 loadSprite("Transition", "./Transition 1.png");
 loadSprite("Niveau 1", "./Niveau 1.png")
+loadSprite("Pixel Pest", "./Pixel Pest.png")
 
 //Charger les fichiers audio
 loadSound("Ecran accueil", "./Ecran accueil.mp3")
@@ -96,8 +97,8 @@ scene("transition", () => {
   "x               x",
   "xxxxxxxxxxxxxxxxx",
 ], {
-  width: 16,
-  height: 16,
+  tileWidth: 16,
+  tileHeight: 16,
   "=": [sprite("wall"), area(), body({ isStatic: true })],
 });
 
@@ -117,7 +118,7 @@ scene("Niveau 1", () => {
   ]);
 
   const Ogre = add([
-    sprite("ogre"),
+    sprite("Ogre"),
     pos(250, 120),
     scale(2),
     area({ width: 2, height: 2 }),
@@ -194,8 +195,8 @@ function nextLevel() {
 		"x               x",
 		"xxxxxxxxxxxxxxxxx",
 	  ], {
-		width: 16,
-		height: 16,
+		tileWidth: 16,
+		tileHeight: 16,
 		"=": [sprite("wall"), area(), body({ isStatic: true })],
 	  });	
 	  // code pour afficher le niveau suivant
