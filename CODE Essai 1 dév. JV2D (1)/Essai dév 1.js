@@ -85,7 +85,7 @@ scene("transition", () => {
 	});
 });
 
-//Niveau 1 (interraction 1v1)
+//NIVEAU 1 (interraction 1v1)
 	//Ajout murs infranchissables
 	const level = addLevel([
   "xxxxxxxxxxxxxxxxx",
@@ -149,20 +149,57 @@ scene("Niveau 1", () => {
 	
 	});
 
-	//Dialogue entre Player et Ogre lorsqu'ils entrent en collision
-	player.collides("ogre", () => {
-		add([
-		  text("Ogre: Hey toi, qui es-tu ?", 10),
-		  pos(width() / 2, height() / 3),
-		  origin("center"),
-		]);
+	//Dialogue et question à choix multiple entre Player et Ogre lorsqu'ils entrent en collision
+	function checkCollision(sprite1, sprite2) {
+		// Vérifie si les deux sprites se touchent
+		if (sprite1.x < sprite2.x + sprite2.width &&
+		  sprite1.x + sprite1.width > sprite2.x &&
+		  sprite1.y < sprite2.y + sprite2.height &&
+		  sprite1.y + sprite1.height > sprite2.y) {
+		  
+		  // Affiche les trois lignes de paroles de l'ogre
+		  console.log("Ogre : Mais... qui es-tu ? Que fais-tu dehors ? C'est dangereux !");
+		  console.log("Ogre : ... Je ne suis pas sûr de comprendre... tu viens de l'an du Seigneur 2050 ?");
+		  console.log("Ogre : Peu importe pour l'instant! Peux-tu m'aider grâce aux connaissances de ton monde ?");
+		  
+		  // Pose une question à choix multiple à Player
+		  console.log("Ogre : Sais-tu comment se protéger de l'épidémie de peste qui ravage Lausanne ?");
+		  console.log("a) En retirant l'excès de bile noire par des saignées");
+		  console.log("b) En confinant la population et en se lavant régulièrement les mains");
+		  
+		  // Attend la réponse de Player
+		  let response = prompt("Réponds avec 'a' ou 'b'");
+		  
+		  // Vérifie la réponse de Player et passage au niveau 2 si bonne réponse
+		  if (response === "a") {
+			console.log("Ogre : C'est déjà ce que nous faisons, mais les gens continuent de mourir...");
+		  } else if (response === "b") {
+			console.log("Ogre : Ton idée m'a l'air bonne... Suis-moi !");
+			nextLevel(); // appelle la fonction nextLevel() pour passer au niveau suivant	
+		} else {
+			console.log("Ogre : Je ne suis pas sûr de comprendre...");
+		  }
+		}
+	  }
 	
-		add([
-		  text("Joueur: Je suis un aventurier !", 10),
-		  pos(width() / 2, height() / 2),
-		  origin("center"),
-		]);
-	  });
-	
+//NIVEAU 2 (interraction 1vFamille)
+function nextLevel() {
+	console.log("Passer au niveau suivant...");
+	const level = addLevel([
+		"xxxxxxxxxxxxxxxxx",
+		"x               x",
+		"x               x",
+		"x               x",
+		"x               x",
+		"x               x",
+		"xxxxxxxxxxxxxxxxx",
+	  ], {
+		width: 16,
+		height: 16,
+		"=": [sprite("wall"), area(), body({ isStatic: true })],
+	  });	
+	  // code pour afficher le niveau suivant
+	  go("Niveau 2");  }
+
 	// Démarrez le jeu sur l'écran d'accueil
 	go("home");
