@@ -3,7 +3,11 @@ kaboom({
 	width: 800,
 	height: 800,
 	background: [0, 0, 0],
+	font : "nomDonne"
 });
+
+// Charger la police accentuée
+loadFont("nomDonne", "assets/nomFichier.ttf")
 
 // Charger la feuille de sprite et l'ajouter
 loadSpriteAtlas("assets/dungeon.png", "assets/dungeon.json");
