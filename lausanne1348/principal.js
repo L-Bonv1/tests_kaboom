@@ -6,18 +6,18 @@ kaboom({
 });
 
 // Charger la feuille de sprite et l'ajouter
-loadSpriteAtlas("./dungeon.png", "./dungeon.json");
+loadSpriteAtlas("assets/dungeon.png", "assets/dungeon.json");
 
 // Charger les sprites individuellement
-loadSprite("Ecran accueil", "./Ecran accueil.png");
-loadSprite("Transition", "./Transition 1.png");
-loadSprite("Niveau 1", "./Niveau 1.png");
-loadSprite("Pixel Pest", "./Pixel Pest.png");
-loadSprite("Moine Peste", "./Moine Peste.png");
-loadSprite("Mère Enfant Peste", "./Mère Enfant Peste.png")
+loadSprite("Ecran accueil", "assets/Ecran accueil.png");
+loadSprite("Transition", "assets/Transition 1.png");
+loadSprite("Niveau 1", "assets/Niveau 1.png");
+loadSprite("Pixel Pest", "assets/Pixel Pest.png");
+loadSprite("Moine Peste", "assets/Moine Peste.png");
+loadSprite("Mère Enfant Peste", "assets/Mère Enfant Peste.png")
 
 //Charger les fichiers audio
-loadSound("Musique Transition 1", "./Transition 1.mp3")
+loadSound("Musique Transition 1", "assets/Transition 1.mp3")
 
 //Début du jeu + écran d'accueil
 scene("home", () => { 
@@ -80,7 +80,7 @@ scene("transition", () => {
 		origin("center"),
 	]);
 
-	onKeyPress("Enter", () => {
+	onKeyPress("enter", () => {
 		go("Niveau 1");
 	});
 });
@@ -100,7 +100,7 @@ scene("Niveau 1", () => {
     body(),
   ]);
   const Ogre = add([
-    sprite("Ogre"),
+    sprite("ogre"),
     pos(250, 120),
     scale(2),
     area({ width: 2, height: 2 }),
