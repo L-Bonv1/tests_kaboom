@@ -80,7 +80,7 @@ scene("transition", () => {
 		origin("center"),
 	]);
 
-	onKeyPress("Enter", () => {
+	onKeyPress("enter", () => {
 		go("Niveau 1");
 	});
 });
