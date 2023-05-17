@@ -100,13 +100,13 @@ scene("Niveau 1", () => {
     body(),
   ]);
   const Ogre = add([
-    sprite("ogre"),
-    pos(250, 120),
-    scale(2),
+    sprite("Pixel Pest"),
+    pos(240, 250),
+    scale(3),
     area({ width: 2, height: 2 }),
     body({ isStatic: true }),
   ]);
-	
+  	
 	// Vitesse de déplacement du joueur
 	  const SPEED = 140;
 	// Fonction de déplacement du joueur
