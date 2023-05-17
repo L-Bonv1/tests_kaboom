@@ -3,11 +3,7 @@ kaboom({
 	width: 800,
 	height: 800,
 	background: [0, 0, 0],
-	font : "nomDonne"
 });
-
-// Charger la police accentuée
-loadFont("nomDonne", "assets/nomFichier.ttf")
 
 // Charger la feuille de sprite et l'ajouter
 loadSpriteAtlas("assets/dungeon.png", "assets/dungeon.json");
@@ -28,18 +24,18 @@ scene("home", () => {
 	add([
 		sprite("Ecran accueil"),
 		pos(width() / 1.7, height() / 2),
-		origin("center"),
+		anchor("center"),
 	]);
 	
 	add([
 		text("Appuyez sur espace", 10),
 		pos(width() / 2, height() / 3),
-		origin("center"),
+		anchor("center"),
 	]);
 	add([
 		text("pour voyager dans le temps", 10),
 		pos(width() / 2, height() / 2),
-		origin("center"),
+		anchor("center"),
 	]);
 	
 	onKeyPress("space", () => {
@@ -56,32 +52,32 @@ scene("transition", () => {
 		sprite("Transition"),
 		scale(2),
 		pos(width() / 2, height() / 2),
-		origin("center"),
+		anchor("center"),
 	]);
 	add([
 		text("Bienvenue à Lausanne", 10),
 		pos(width() / 2, height() / 5),
-		origin("center"),
+		anchor("center"),
 	]);
 	add([
 		text("Une vieille pancarte est", 10),
 		pos(width() / 2, height() / 2.5),
-		origin("center"),
+		anchor("center"),
 	]);
 	add([
 		text("plantée là...", 10),
 		pos(width() / 2, height() / 2.2),
-		origin("center"),
+		anchor("center"),
 	]);
 	add([
 		text("-An du seigneur 1348-", 10),
 		pos(width() / 2, height() / 1.8),
-		origin("center"),
+		anchor("center"),
 	]);
 	add([
 		text("Entrez en ville avec Enter", 10),
 		pos(width() / 2, height() / 1.3),
-		origin("center"),
+		anchor("center"),
 	]);
 
 	onKeyPress("enter", () => {
@@ -94,7 +90,7 @@ scene("Niveau 1", () => {
   add([
     sprite("Niveau 1"),
     pos(width() / 2, height() / 2),
-    origin("center"),
+    anchor("center"),
   ]);
   const player = add([
     sprite("hero"),
