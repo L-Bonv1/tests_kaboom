@@ -106,7 +106,7 @@ scene("Niveau 1", () => {
     area({ width: 2, height: 2 }),
     body({ isStatic: true }),
   ]);
-  	
+
 	// Vitesse de déplacement du joueur
 	  const SPEED = 140;
 	// Fonction de déplacement du joueur
