@@ -11,8 +11,17 @@ loadSpriteAtlas("assets/dungeon.png", "assets/dungeon.json");
 // Charger les sprites individuellement
 loadSprite("Ecran accueil", "assets/Ecran accueil.png");
 loadSprite("Transition", "assets/Transition 1.png");
-loadSprite("Niveau 1", "assets/Niveau 1.png");
+loadSprite("Level 1", "assets/Level 1.png");
 loadSprite("Pixel Pest", "assets/Pixel Pest.png");
+loadSprite("Lampadaire 1", "assets/Lampadaire 1.png");
+loadSprite("Lampadaire 2", "assets/Lampadaire 2.png");
+loadSprite("Fontaine", "assets/Fontaine.png");
+loadSprite("Arbre", "assets/Arbre.png");
+loadSprite("Toit1", "assets/Toit1.png");
+loadSprite("Maison1", "assets/Maison1.png");
+loadSprite("Maison2", "assets/Maison2.png");
+loadSprite("Pavés1", "assets/Pavés1.png");
+loadSprite("Pavés2", "assets/Pavés2.png");
 loadSprite("Moine Peste", "assets/Moine Peste.png");
 loadSprite("Mère Enfant Peste", "assets/Mère Enfant Peste.png")
 
@@ -81,14 +90,14 @@ scene("transition", () => {
 	]);
 
 	onKeyPress("enter", () => {
-		go("Niveau 1");
+		go("Level 1");
 	});
 });
 
-//NIVEAU 1 (interraction 1v1)
-scene("Niveau 1", () => {
+//Level 1 (interraction 1v1)
+scene("Level 1", () => {
   add([
-    sprite("Niveau 1"),
+    sprite("Level 1"),
     pos(width() / 2, height() / 2),
     anchor("center"),
   ]);
@@ -101,10 +110,56 @@ scene("Niveau 1", () => {
   ]);
   const Ogre = add([
     sprite("Pixel Pest"),
-    pos(240, 250),
-    scale(3),
+    pos(430, 410),
+    scale(2.5),
     area({ width: 2, height: 2 }),
     body({ isStatic: true }),
+  ]);
+  const Lampadaire = add([
+    sprite("Lampadaire 1"),
+    pos(525, 300),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+  ]);
+  const Lampadaire2 = add([
+    sprite("Lampadaire 2"),
+    pos(377, 450),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+  ]);
+  const Fontaine = add([
+    sprite("Fontaine"),
+    pos(545, 538),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+    body({ isStatic: true }),
+  ]);
+  const Arbre = add([
+    sprite("Arbre"),
+    pos(310, 600),
+    scale(1),
+    area({ width: 2, height: 2 }),
+  ]);
+  const Toit1 = add([
+    sprite("Toit1"),
+    pos(160, 595),
+    scale(1),
+    area({ width: 2, height: 2 }),
+	body({ isStatic: true }),
+  ]);
+  const Maison1 = add([
+    sprite("Maison1"),
+    pos(160, 105),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+	body({ isStatic: true }),
+  ]);
+  const Maison2 = add([
+    sprite("Maison2"),
+    pos(400, 105),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+	body({ isStatic: true }),
   ]);
 
 	// Vitesse de déplacement du joueur
@@ -129,8 +184,9 @@ scene("Niveau 1", () => {
 	});
 
 	//Dialogue et question à choix multiple entre Player et Ogre lorsqu'ils entrent en collision
-	function checkCollision(player, ogre) {
-		// Vérifie si les deux sprites se touchent
+	onCollide("Ogre", "player", () => {
+			
+	// Vérifie si les deux sprites se touchent
 		if (player.x < ogre.x + ogre.width &&
 		  player.x + player.width > ogre.x &&
 		  player.y < ogre.y + ogre.height &&
@@ -159,7 +215,7 @@ scene("Niveau 1", () => {
 			console.log("Ogre : Je ne suis pas sûr de comprendre...");
 		  }
 		}
-	  }
+	  })
 
 	// Démarrez le jeu sur l'écran d'accueil
 	go("home");
