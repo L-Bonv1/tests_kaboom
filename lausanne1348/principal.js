@@ -6,7 +6,16 @@ kaboom({
 });
 
 // Charger la feuille de sprite et l'ajouter
-loadSpriteAtlas("assets/dungeon.png", "assets/dungeon.json");
+//loadSpriteAtlas("assets/dungeon.png", "assets/dungeon.json");
+loadSpriteAtlas("assets/dungeon.png", {
+    "hero": {
+        x: 128,
+        y: 108,
+        width: 144,
+        height: 28,
+        sliceX: 9,
+	},
+}),		
 
 // Charger les sprites individuellement
 loadSprite("Ecran accueil", "assets/Ecran accueil.png");
@@ -202,7 +211,7 @@ scene("Level 1", () => {
   ]);
   const BordH = add([
     sprite("BordH"),
-    pos(155, 70),
+    pos(180, 80),
     scale(0.9),
     area({ width: 2, height: 2 }),
 	body({ isStatic: true }),
