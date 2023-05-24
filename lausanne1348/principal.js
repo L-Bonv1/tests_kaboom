@@ -12,7 +12,7 @@ loadSpriteAtlas("assets/dungeon.png", "assets/dungeon.json");
 loadSprite("Ecran accueil", "assets/Ecran accueil.png");
 loadSprite("Transition", "assets/Transition 1.png");
 loadSprite("Level 1", "assets/Level 1.png");
-loadSprite("Pixel Pest", "assets/Pixel Pest.png");
+loadSprite("Docteur", "assets/Docteur.png");
 loadSprite("Lampadaire 1", "assets/Lampadaire 1.png");
 loadSprite("Lampadaire 2", "assets/Lampadaire 2.png");
 loadSprite("Fontaine", "assets/Fontaine.png");
@@ -20,6 +20,10 @@ loadSprite("Arbre", "assets/Arbre.png");
 loadSprite("Toit1", "assets/Toit1.png");
 loadSprite("Maison1", "assets/Maison1.png");
 loadSprite("Maison2", "assets/Maison2.png");
+loadSprite("BordD", "assets/BordD.png");
+loadSprite("BordB", "assets/BordB.png");
+loadSprite("BordG", "assets/BordG.png");
+loadSprite("BordH", "assets/BordH.png");
 loadSprite("Pavés1", "assets/Pavés1.png");
 loadSprite("Pavés2", "assets/Pavés2.png");
 loadSprite("Moine Peste", "assets/Moine Peste.png");
@@ -103,15 +107,29 @@ scene("Level 1", () => {
   ]);
   const player = add([
     sprite("hero"),
-    pos(450, 300),
+    pos(582, 478),
     scale(2),
     area({ width: 2, height: 2 }),
     body(),
   ]);
-  const Ogre = add([
-    sprite("Pixel Pest"),
+  const Docteur = add([
+    sprite("Docteur"),
     pos(430, 410),
     scale(2.5),
+    area({ width: 2, height: 2 }),
+    body({ isStatic: true }),
+  ]);
+  const Moine = add([
+    sprite("Moine Peste"),
+    pos(200, 500),
+    scale(2.8),
+    area({ width: 2, height: 2 }),
+    body({ isStatic: true }),
+  ]);
+  const Mère = add([
+    sprite("Mère Enfant Peste"),
+    pos(500, 200),
+    scale(2.9),
     area({ width: 2, height: 2 }),
     body({ isStatic: true }),
   ]);
@@ -161,6 +179,34 @@ scene("Level 1", () => {
     area({ width: 2, height: 2 }),
 	body({ isStatic: true }),
   ]);
+  const BordD = add([
+    sprite("BordD"),
+    pos(630, 105),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+	body({ isStatic: true }),
+  ]);
+  const BordB = add([
+    sprite("BordB"),
+    pos(155, 690),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+	body({ isStatic: true }),
+  ]);
+  const BordG = add([
+    sprite("BordG"),
+    pos(145, 100),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+	body({ isStatic: true }),
+  ]);
+  const BordH = add([
+    sprite("BordH"),
+    pos(155, 70),
+    scale(0.9),
+    area({ width: 2, height: 2 }),
+	body({ isStatic: true }),
+  ]);
 
 	// Vitesse de déplacement du joueur
 	  const SPEED = 140;
@@ -183,22 +229,22 @@ scene("Level 1", () => {
 	  });
 	});
 
-	//Dialogue et question à choix multiple entre Player et Ogre lorsqu'ils entrent en collision
-	onCollide("Ogre", "player", () => {
+	//Dialogue et question à choix multiple entre Player et Docteur lorsqu'ils entrent en collision
+	onCollide("Docteur", "player", () => {
 			
 	// Vérifie si les deux sprites se touchent
-		if (player.x < ogre.x + ogre.width &&
-		  player.x + player.width > ogre.x &&
-		  player.y < ogre.y + ogre.height &&
-		  player.y + player.height > ogre.y) {
+		if (player.x < Docteur.x + Docteur.width &&
+		  player.x + player.width > Docteur.x &&
+		  player.y < Docteur.y + Docteur.height &&
+		  player.y + player.height > Docteur.y) {
 		 
-		  // Affiche les trois lignes de paroles de l'ogre
-		  console.log("Ogre : Mais... qui es-tu ? Quel est cet accoutrement ?");
-		  console.log("Ogre : ... Je ne suis pas sûr de comprendre... tu viens de l'an du Seigneur 2050 ?");
-		  console.log("Ogre : Peu importe pour l'instant! Peux-tu m'aider grâce aux connaissances de ton monde ?");
+		  // Affiche les trois lignes de paroles de l'Docteur
+		  console.log("Docteur : Mais... qui es-tu ? Quel est cet accoutrement ?");
+		  console.log("Docteur : ... Je ne suis pas sûr de comprendre... tu viens de l'an du Seigneur 2050 ?");
+		  console.log("Docteur : Peu importe pour l'instant! Peux-tu m'aider grâce aux connaissances de ton monde ?");
 		  
 		  // Pose une question à choix multiple à Player
-		  console.log("Ogre : Sais-tu comment se protéger de l'épidémie de peste qui ravage Lausanne ?");
+		  console.log("Docteur : Sais-tu comment se protéger de l'épidémie de peste qui ravage Lausanne ?");
 		  console.log("a) En retirant le mal du corps des victimes par des saignées");
 		  console.log("b) En gardant ses distances avec la population et en se lavant régulièrement les mains avec de l'alcool");
 		  
@@ -207,12 +253,12 @@ scene("Level 1", () => {
 		  
 		  // Vérifie la réponse de Player et passage au niveau 2 si bonne réponse
 		  if (response === "a") {
-			console.log("Ogre : C'est déjà ce que nous faisons, mais les gens continuent de mourir...");
+			console.log("Docteur : C'est déjà ce que nous faisons, mais les gens continuent de mourir...");
 		  } else if (response === "b") {
-			console.log("Ogre : Ton idée m'a l'air bonne... Vas parler à cette femme et son enfant, ton savoir pourrait l'intéresser !");
+			console.log("Docteur : Ton idée m'a l'air bonne... Vas parler à cette femme et son enfant, ton savoir pourrait l'intéresser !");
 			nextLevel(); // appelle la fonction nextLevel() pour passer au niveau suivant	
 		} else {
-			console.log("Ogre : Je ne suis pas sûr de comprendre...");
+			console.log("Docteur : Je ne suis pas sûr de comprendre...");
 		  }
 		}
 	  })
