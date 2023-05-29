@@ -120,6 +120,7 @@ scene("Level 1", () => {
     scale(2),
     area({ width: 2, height: 2 }),
     body(),
+	"hero"
   ]);
   const Docteur = add([
     sprite("Docteur"),
@@ -127,6 +128,7 @@ scene("Level 1", () => {
     scale(2.5),
     area({ width: 2, height: 2 }),
     body({ isStatic: true }),
+	"docteur"
   ]);
   const Moine = add([
     sprite("Moine Peste"),
@@ -236,41 +238,41 @@ scene("Level 1", () => {
 	  onKeyDown("down", () => {
 		movePlayer(vec2(0, 1));
 	  });
-	});
 
 	//Dialogue et question à choix multiple entre Player et Docteur lorsqu'ils entrent en collision
-	onCollide("Docteur", "player", () => {
-			
-	// Vérifie si les deux sprites se touchent
-		if (player.x < Docteur.x + Docteur.width &&
-		  player.x + player.width > Docteur.x &&
-		  player.y < Docteur.y + Docteur.height &&
-		  player.y + player.height > Docteur.y) {
+	Docteur.onCollide("hero", () => {
+		console.log("contact")
+		 // Affiche les trois lignes de paroles de l'Docteur
+		 console.log("Docteur : Mais... qui es-tu ? Quel est cet accoutrement ?");
+		 console.log("Docteur : ... Je ne suis pas sûr de comprendre... tu viens de l'an du Seigneur 2050 ?");
+		 console.log("Docteur : Peu importe pour l'instant! Peux-tu m'aider grâce aux connaissances de ton monde ?");
 		 
-		  // Affiche les trois lignes de paroles de l'Docteur
-		  console.log("Docteur : Mais... qui es-tu ? Quel est cet accoutrement ?");
-		  console.log("Docteur : ... Je ne suis pas sûr de comprendre... tu viens de l'an du Seigneur 2050 ?");
-		  console.log("Docteur : Peu importe pour l'instant! Peux-tu m'aider grâce aux connaissances de ton monde ?");
-		  
-		  // Pose une question à choix multiple à Player
-		  console.log("Docteur : Sais-tu comment se protéger de l'épidémie de peste qui ravage Lausanne ?");
-		  console.log("a) En retirant le mal du corps des victimes par des saignées");
-		  console.log("b) En gardant ses distances avec la population et en se lavant régulièrement les mains avec de l'alcool");
-		  
-		  // Attend la réponse de Player
-		  let response = prompt("Réponds avec 'a' ou 'b'");
-		  
-		  // Vérifie la réponse de Player et passage au niveau 2 si bonne réponse
-		  if (response === "a") {
-			console.log("Docteur : C'est déjà ce que nous faisons, mais les gens continuent de mourir...");
-		  } else if (response === "b") {
-			console.log("Docteur : Ton idée m'a l'air bonne... Vas parler à cette femme et son enfant, ton savoir pourrait l'intéresser !");
-			nextLevel(); // appelle la fonction nextLevel() pour passer au niveau suivant	
-		} else {
-			console.log("Docteur : Je ne suis pas sûr de comprendre...");
-		  }
-		}
-	  })
+		 // Pose une question à choix multiple à Player
+		 console.log("Docteur : Sais-tu comment se protéger de l'épidémie de peste qui ravage Lausanne ?");
+		 console.log("a) En retirant le mal du corps des victimes par des saignées");
+		 console.log("b) En gardant ses distances avec la population et en se lavant régulièrement les mains avec de l'alcool");
+		 
+		 // Attend la réponse de Player
+		 let response = prompt("Réponds avec 'a' ou 'b'");
+		 
+		 // Vérifie la réponse de Player et passage au niveau 2 si bonne réponse
+		 if (response === "a") {
+		   console.log("Docteur : C'est déjà ce que nous faisons, mais les gens continuent de mourir...");
+		 } else if (response === "b") {
+		   console.log("Docteur : Ton idée m'a l'air bonne... Vas parler à cette femme et son enfant, ton savoir pourrait l'intéresser !");
+		   nextLevel(); // appelle la fonction nextLevel() pour passer au niveau suivant	
+	   } else {
+		   console.log("Docteur : Je ne suis pas sûr de comprendre...");
+		 }
+	 })
+
+	});
 
 	// Démarrez le jeu sur l'écran d'accueil
 	go("home");
+
+	/* exemple d'interpolation de chaîne */
+
+	let t = "salut"
+	let r = "marc"
+	console.log(`${t} mon cher ${r}`)
