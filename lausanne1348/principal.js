@@ -124,7 +124,7 @@ scene("Level 1", () => {
   ]);
   const Docteur = add([
     sprite("Docteur"),
-    pos(430, 410),
+    pos(425, 410),
     scale(2.5),
     area({ width: 2, height: 2 }),
     body({ isStatic: true }),
@@ -136,13 +136,15 @@ scene("Level 1", () => {
     scale(2.8),
     area({ width: 2, height: 2 }),
     body({ isStatic: true }),
+	"moine"
   ]);
-  const Mère = add([
+  const Maman = add([
     sprite("Mère Enfant Peste"),
     pos(500, 200),
     scale(2.9),
     area({ width: 2, height: 2 }),
     body({ isStatic: true }),
+	"maman"
   ]);
   const Lampadaire = add([
     sprite("Lampadaire 1"),
@@ -253,7 +255,7 @@ scene("Level 1", () => {
 		 console.log("b) En gardant ses distances avec la population et en se lavant régulièrement les mains avec de l'alcool");
 		 
 		 // Attend la réponse de Player
-		 let response = prompt("Réponds avec 'a' ou 'b'");
+		 let response = prompt("Docteur : Prends garde voyageur, la peste rôde... Et sinon, moi et les autres habitants sommes encore en cours de développement...");
 		 
 		 // Vérifie la réponse de Player et passage au niveau 2 si bonne réponse
 		 if (response === "a") {
@@ -266,8 +268,8 @@ scene("Level 1", () => {
 		 }
 	 })
 
-	});
-
+	}); 
+	
 	// Démarrez le jeu sur l'écran d'accueil
 	go("home");
 
